@@ -56,7 +56,7 @@ def get_pie_chart(entered_site):
     if entered_site == 'ALL':
         filtered_df = filtered_df[filtered_df['class'] == 1]
         filtered_df = filtered_df.groupby('Launch Site')['class'].sum().reset_index()
-        fig = px.pie(filtered_df, values='class', names='Launch Site', title = 'Total Success Launches By Site')
+        fig = px.pie(filtered_df, values='class', names='Launch Site', title = 'Total Success Landings By Site')
         return fig
     else:
         filtered_df = filtered_df[filtered_df['Launch Site'] == entered_site]
@@ -64,7 +64,7 @@ def get_pie_chart(entered_site):
         launch_counts.columns = ['class', 'count']
         class_mapping = {0: 'Failure', 1: 'Success'}
         launch_counts['class'] = launch_counts['class'].map(class_mapping)
-        fig = px.pie(launch_counts, values='count', names='class', title = f'Total Success Launches at {entered_site}')
+        fig = px.pie(launch_counts, values='count', names='class', title = f'Total Success Landings By {entered_site}')
         return fig
 
 
